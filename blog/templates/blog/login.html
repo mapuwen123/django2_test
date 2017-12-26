@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/uikit.min.css" %}">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{% static "js/uikit.min.js" %}"></script>
+    <script src="{% static "js/uikit-icons.min.js" %}"></script>
+</head>
+<body>
+
+<form action="{% url 'blog:login' %}" method="post">
+    {% csrf_token %}
+    <input type="text" id="name" name="name" placeholder="用户名">
+    <input type="password" id="password" name="password" placeholder="密码">
+    <button type="submit">登录</button>
+</form>
+
+</body>
+</html>

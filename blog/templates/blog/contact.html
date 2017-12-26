@@ -1,0 +1,50 @@
+{% extends "blog/base.html" %}
+{% block title %}联系{% endblock %}
+{% block content %}
+    <main role="main">
+        <div class="content">
+            <article class="page-article">
+                <div class="wrap-content">
+                    <header class="page-header">
+                        <h1 class="page-title">Contact</h1>
+                        <div class="page-date"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+                    </header>
+                    <div class="page-content">
+                        {% if result %}
+                            <div class="uk-alert-primary" data-uk-alert>
+                                <a class="uk-alert-close" uk-close></a>
+                                <p>{{ result }}，感谢您的反馈！</p>
+                            </div>
+                        {% endif %}
+                        <form class="form" action="{% url 'blog:contact' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="form-item">
+                                <label class="contact-label" for="name">姓名:</label>
+                                <input type="text" placeholder="您的姓名" id="name" class="contact-input" name="name"
+                                       tabindex="1" required="">
+                            </div>
+                            <div class="form-item">
+                                <label class="contact-label" for="email">邮箱:</label>
+                                <input type="email" placeholder="您的邮箱" id="email" class="contact-input"
+                                       name="email" tabindex="2" required="">
+                            </div>
+                            <div class="form-item">
+                                <label class="contact-label" for="message">内容:</label>
+                                <textarea class="contact-input" placeholder="内容" rows="4" id="message"
+                                          name="message" tabindex="3" required=""></textarea>
+                            </div>
+                            <div class="form-item">
+                                <button type="submit" value="Send" class="form-btn">提交</button>
+                            </div>
+                        </form>
+
+                    </div>
+
+
+                </div>
+            </article>
+
+        </div>
+    </main>
+    {{ block.super }}
+{% endblock %}

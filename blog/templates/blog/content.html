@@ -1,0 +1,40 @@
+{% extends "blog/base.html" %}
+{% block head %}
+    {{ block.super }}
+    {% load staticfiles %}
+    <script charset="utf-8" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{% endblock %}
+{% block title %}内容{% endblock %}
+{% block content %}
+    <main role="main">
+        <div class="content">
+            <article class="page-article">
+                <div class="wrap-content">
+                    <header class="page-header">
+                        <h1 class="page-title">{{ article.title }}</h1>
+                        <div class="page-date"><span>{{ article.date }}</span></div>
+                    </header>
+                    {% if article.picture %}
+                        <img class="post-image" src="/media/{{ article.picture }}">
+                    {% endif %}
+                    <div style="display:none;">
+                    <textarea name="editor_id" class="ckeditor" name="content" style="width:700px;height:300px;">
+{{ content.content }}
+</textarea>
+                    </div>
+
+                    <div id="show" class="page-content">
+                    </div>
+
+                </div>
+            </article>
+
+        </div>
+    </main>
+    {{ block.super }}
+    <script type="text/javascript">
+        CKEDITOR.replace('editor_id');
+        var html = CKEDITOR.instances.editor_id.getData();
+        $('#show').html(html)
+    </script>
+{% endblock %}

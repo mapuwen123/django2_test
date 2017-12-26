@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    {% block head %}
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link href="https://fonts.googleapis.com/css?family=Finger+Paint|PT+Sans:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/uikit.min.css" %}">
+        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+        <script src="{% static "js/uikit.min.js" %}"></script>
+        <script src="{% static "js/uikit-icons.min.js" %}"></script>
+    {% endblock %}
+</head>
+<body style="height: 100%">
+<div id="left">
+    {% block left %}
+        <aside class="sidebar">
+            <div class="sidebar-container">
+                <div class="sidebar-logo">
+                    <a href="{% url 'blog:index' %}" class="logo">Marvin</a>
+                </div>
+                <menu class="sidebar-menu">
+                    <li class="menu-items"><a class="menu-links" href="{% url 'blog:index' %}">主页</a></li>
+                    <li class="menu-items"><a class="menu-links" href="{% url 'blog:about' %}">关于</a></li>
+                    <li class="menu-items"><a class="menu-links" href="{% url 'blog:contact' %}">联系</a></li>
+                    <li class="menu-items"><a class="menu-links" href="https://github.com/mapuwen123">Github</a></li>
+                </menu>
+
+                <div class="sidebar-social">
+                    Copyright ©2017 Marvin Powered By Marvin Version 1.0.0
+                </div>
+
+            </div>
+        </aside>
+    {% endblock %}
+</div>
+<div id="content">
+    {% block content %}
+        <script charset="UTF-8" type="text/javascript">
+            if ($('#content').height() < $(window).height()) {
+                $('html').css('height', '100%');
+                $('body').css('height', '100%');
+            }
+        </script>
+    {% endblock %}
+</div>
+</body>
+</html>

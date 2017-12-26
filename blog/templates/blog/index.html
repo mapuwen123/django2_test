@@ -1,0 +1,31 @@
+{% extends "blog/base.html" %}
+{% block title %}首页{% endblock %}
+{% block content %}
+    <main role="main">
+        <div class="content">
+            {% load pagination_tags %}
+            {% autopaginate article_list 3 %}
+            {% for foo in article_list %}
+                <article class="main-article">
+                    <div class="wrap-content">
+                        <header class="header-article">
+                            <h2 class="title-article"><a href="content?id={{ foo.id }}">{{ foo.title }}</a></h2>
+                            <div class="post-date"><span>{{ foo.date }}</span></div>
+                        </header>
+
+                        {% if foo.picture %}
+                            <img class="post-image" src="/media/{{ foo.picture }}">
+                        {% endif %}
+
+                        <p>{{ foo.describe }}<a class="more" href="content?id={{ foo.id }}">(Read
+                            more...)</a></p>
+                    </div>
+                </article>
+            {% endfor %}
+            {% paginate %}
+
+        </div>
+        </div>
+    </main>
+    {{ block.super }}
+{% endblock %}
