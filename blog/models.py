@@ -51,3 +51,9 @@ class User(models.Model):
     id = models.AutoField('ID', primary_key=True)
     name = models.CharField('用户名', max_length=50)
     password = models.CharField('密码', max_length=100)
+
+
+# redis更新标识表
+class redis_update(models.Model):
+    key = models.CharField('KEY', primary_key=True, max_length=50)
+    value = models.IntegerField('VALUE')

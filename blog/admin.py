@@ -2,7 +2,7 @@
 # coding: utf-8
 
 from django.contrib import admin
-from .models import Articles, Content, Contact, User
+from .models import Articles, Content, Contact, User, redis_update
 from django.core.cache import cache
 
 
@@ -55,3 +55,4 @@ class ContactAdmin(admin.ModelAdmin):
 
 
 admin.site.register(User)
+admin.site.register(redis_update)
