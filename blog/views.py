@@ -2,13 +2,13 @@
 # coding: utf-8
 
 from django.shortcuts import render
+
+from blog.view.about import about
+from blog.view.contact import contact
 from blog.view.content import content
 from blog.view.index import index
-from blog.view.contact import contact
-from blog.view.about import about
-from blog.view.regist import regist
 from blog.view.login import login
-from django.http import HttpResponseNotFound
+from blog.view.regist import regist
 
 
 # Create your views here.

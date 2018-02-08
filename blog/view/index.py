@@ -5,10 +5,16 @@ from django.core.cache import cache
 from django.shortcuts import render
 
 from blog.models import Articles
+from django.contrib.sessions.models import Session
 
 
 def index(request):
-    # user_dict = request.session.get('user_dict', default=None)
+    request.session['username'] = 'mapuwen'
+    request.session['password'] = '274226ma'
+    user_dict = request.session.get('user_dict', default=None)
+    s = Session.objects.get(pk=request.session.session_key)
+    print(request.session.session_key)
+    print(s.get_decoded())
     # if not user_dict is None:
     # print('INDEX_1:', user_dict)
     # request.session.delete(request.session.session_key)
